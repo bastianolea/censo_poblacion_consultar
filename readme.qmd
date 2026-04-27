@@ -2,31 +2,68 @@
 
 Función para consultar la población de comunas, regiones, provincias o país según resultados del Censo 2024.
 
+Diseñada para registrarla como herramienta para LLMs y así hacer que la IA pueda consultar datos de población censal.
 
-Uso:
+Más información [en esta publicación.](https://bastianolea.rbind.io/blog/herramientas_llm/)
 
+## Instalación
+
+Clona este repositorio, o descarga el script `consultar_censo.R` y el archivo `censo.rds` en tu proyecto de R.
+
+## Ejemplos de uso
+
+Población a nivel nacional:
 ```{r}
+# cargar la función
 source("consultar_censo.R")
 
 consultar_censo()
+```
 
+Población de una región:
+```{r}
 consultar_censo(nivel = "Región", 
                 territorio = "Maule")
+```
 
+Población de una comuna:
+```{r}
 consultar_censo(nivel = "Comuna", 
                 territorio = "Curanilahue")
+```
 
+
+Población por comuna y sexo:
+```{r}
 consultar_censo(nivel = "Comuna", 
                 sexo = "Mujeres",
                 territorio = "Curanilahue")
+```
 
+Población por comuna y edad
+```{r}
 consultar_censo(nivel = "Comuna", 
                 edad = "50 a 54",
                 territorio = "Las Condes")
+```
 
+Población por comuna, sexo y edad
+```{r}
+consultar_censo(nivel = "Comuna", 
+                sexo = "Hombres",
+                edad = "30", # interpreta el número como rango de edad
+                territorio = "La Florida")
+```
+
+Población por provincia:
+```{r}
 consultar_censo(nivel = "Provincia", 
                 territorio = "Cordillera")
 
+```
+
+Ejemplos de la interpretación de edades en grupos de edad:
+```{r}
 # interpreta edad
 consultar_censo(nivel = "Comuna", 
                 edad = 0,

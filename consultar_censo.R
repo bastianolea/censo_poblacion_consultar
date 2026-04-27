@@ -2,7 +2,7 @@
 # en distintos niveles (país, región, provincia, comuna) y 
 # opcionalmente desagregadas por sexo y grupos de edad.
 
-library(dplyr)
+library(dplyr) |> suppressPackageStartupMessages()
 library(readr)
 library(cli)
 
