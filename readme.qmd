@@ -1,0 +1,46 @@
+
+
+Función para consultar la población de comunas, regiones, provincias o país según resultados del Censo 2024.
+
+
+Uso:
+
+```{r}
+source("consultar_censo.R")
+
+consultar_censo()
+
+consultar_censo(nivel = "Región", 
+                territorio = "Maule")
+
+consultar_censo(nivel = "Comuna", 
+                territorio = "Curanilahue")
+
+consultar_censo(nivel = "Comuna", 
+                sexo = "Mujeres",
+                territorio = "Curanilahue")
+
+consultar_censo(nivel = "Comuna", 
+                edad = "50 a 54",
+                territorio = "Las Condes")
+
+consultar_censo(nivel = "Provincia", 
+                territorio = "Cordillera")
+
+# interpreta edad
+consultar_censo(nivel = "Comuna", 
+                edad = 0,
+                territorio = "Las Condes")
+
+# interpreta edad
+consultar_censo(nivel = "Comuna", 
+                edad = 53,
+                territorio = "Ñuñoa")
+
+```
+
+Más información [en esta publicación.](https://bastianolea.rbind.io/blog/herramientas_llm/)
+
+## Datos
+
+- Población censada por sexo, según grupos de edad quinquenal, a nivel región, provincia y comuna.

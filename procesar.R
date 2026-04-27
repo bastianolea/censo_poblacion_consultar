@@ -1,7 +1,5 @@
-# a qué nivel (nacional, regional, provincial, comunal)
-# qué sexos (hombre, mujer, total)
-# qué edades ({grupos de edad}, total)
-
+# procesa los datos del censo 2024 publicados por el INE para
+# su uso más cómodo desde R (datos en formato largo)
 
 library(dplyr)
 library(readxl)
