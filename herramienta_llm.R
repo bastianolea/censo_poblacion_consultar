@@ -37,20 +37,23 @@ herramienta_censo <- tool(
 )
 
 
-# iniciar modelo
-chat <- chat_anthropic(
-  model = "claude-haiku-4-5"
-)
+# probar chat ----
 
-# ver si responde bien
+# iniciar modelo
+chat <- chat_anthropic(model = "claude-haiku-4-5")
+# chat <- chat_ollama(model = "llama3.2")
+
+# ver si responde bien sin herramienta
 chat$chat("Cuál es la población de Curanilahue?")
 
+# probar herramienta en chat ----
 # entregarle herramienta
 chat$register_tool(herramienta_censo)
 
-# probar
+# probar ahora que tiene la herramienta
 chat$chat("Cuál es la población de Curanilahue?")
 
+# probar otros casos más complejos
 chat$chat("Cuál es la población femenina de Curanilahue?")
 
 chat$chat("Cuál es la población masculina de Curanilahue mayor de 20 años?")

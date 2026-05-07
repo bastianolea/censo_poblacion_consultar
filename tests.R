@@ -1,4 +1,6 @@
+# para probar la función 
 
+source("consultar_censo.R")
 
 # pruebas ----
 consultar_censo()
