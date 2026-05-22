@@ -21,10 +21,10 @@ publicación.](https://bastianolea.rbind.io/blog/herramientas_llm/)
 
 ## Datos
 
-- `datos/censo_2024_largo.csv` resultados del Censo 2024 en formato largo, por edad y sexo, calculados directamente de la base de datos oficial (`personas_censo2024.parquet`) en el script `datos/procesar_censo.R` (opcional)
+- `datos/censo_2024_tidy.csv` resultados del Censo 2024 en formato largo, por edad y sexo, calculados directamente de la base de datos oficial (`personas_censo2024.parquet`) en el script `datos/procesar_censo.R` (opcional)
 
 
-## Ejemplos de uso
+## Ejemplos de uso de la función
 
 Población a nivel nacional:
 ```{r}
@@ -92,7 +92,7 @@ consultar_censo(nivel = "Comuna",
 
 ```
 
-Más información [en esta publicación.](https://bastianolea.rbind.io/blog/herramientas_llm/)
+Más información sobre el uso de herramientas con LLMs/IA [en esta publicación.](https://bastianolea.rbind.io/blog/herramientas_llm/)
 
 ## Datos
 

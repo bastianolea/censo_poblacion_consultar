@@ -4,7 +4,7 @@ library(cli)
 
 # datos requeridos
 cargar_censo <- function() {
-  read_csv2("datos/censo_2024_largo.csv", show_col_types = FALSE)
+  read_csv2("datos/censo_2024_tidy.csv", show_col_types = FALSE)
 }
 
 

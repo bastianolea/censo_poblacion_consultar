@@ -151,7 +151,6 @@ censo_largo |>
 censo_largo
 # censo_original
 
-
 codigos_territoriales <- readxl::read_xlsx(
   "datos/diccionario_variables_censo2024.xlsx",
   sheet = "codigos_territoriales"
@@ -192,4 +191,4 @@ censo <- censo_largo |>
 
 censo
 
-readr::write_csv2(censo, "datos/censo_2024_largo.csv")
+readr::write_csv2(censo, "datos/censo_2024_tidy.csv")
