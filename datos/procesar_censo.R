@@ -149,11 +149,11 @@ censo_largo |>
   arrange(edad)
 
 censo_largo
-censo_original
+# censo_original
 
 
 codigos_territoriales <- readxl::read_xlsx(
-  "~/Documents/Datos/Censo/2024/diccionario_variables_censo2024.xlsx",
+  "datos/diccionario_variables_censo2024.xlsx",
   sheet = "codigos_territoriales"
 ) |>
   rename(codigo = 1, nivel = 2, nombre = 3)
@@ -191,3 +191,5 @@ censo <- censo_largo |>
   arrange(nivel, region, provincia, comuna, sexo, edad)
 
 censo
+
+readr::write_csv2(censo, "datos/censo_2024_largo.csv")

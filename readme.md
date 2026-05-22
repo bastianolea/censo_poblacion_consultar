@@ -10,10 +10,23 @@ IA pueda consultar datos de población censal.
 Más información [en esta
 publicación.](https://bastianolea.rbind.io/blog/herramientas_llm/)
 
-## Instalación
+## Archivos
 
-Clona este repositorio, o descarga el script `consultar_censo.R` y el
-archivo `censo.rds` en tu proyecto de R.
+- `funciones.R` contiene la función `consultar_censo()`, así como otras
+  funciones necesarias para su funcionamiento.
+- `probar.R` muestra ejemplos de uso de `consultar_censo()` y prueba los
+  errores de la misma.
+- `herramienta.R` define el uso de la función `consultar_censo()` para
+  que los modelos de lenguaje puedan usarla.
+- `probar_herramienta.R` muestra ejemplos del uso de la función por
+  medio de un chat de IA.
+
+## Datos
+
+- `datos/censo_2024_largo.csv` resultados del Censo 2024 en formato
+  largo, por edad y sexo, calculados directamente de la base de datos
+  oficial (`personas_censo2024.parquet`) en el script
+  `datos/procesar_censo.R` (opcional)
 
 ## Ejemplos de uso
 
@@ -21,8 +34,14 @@ Población a nivel nacional:
 
 ``` r
 # cargar la función
-source("consultar_censo.R")
+source("funciones.R")
 
+censo <- cargar_censo()
+```
+
+    ℹ Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
+
+``` r
 consultar_censo()
 ```
 
@@ -78,13 +97,13 @@ Población por comuna y edad
 
 ``` r
 consultar_censo(nivel = "Comuna", 
-                edad = "50 a 54",
+                edad = "50-54",
                 territorio = "Las Condes")
 ```
 
     → datos a nivel comuna, Las Condes
 
-    → grupo de edad: 50 a 54
+    → grupo de edad: 50-54
 
     ℹ población censada: 18.507
 
@@ -99,11 +118,15 @@ consultar_censo(nivel = "Comuna",
                 territorio = "La Florida")
 ```
 
-    ! la edad "30" fue interpretada como "30 a 34"
+    Loading required package: purrr
+
+    Loading required package: stringr
+
+    ! edad "30" interpretada como "30-34"
 
     → datos a nivel comuna, La Florida
 
-    → grupo de edad: 30 a 34
+    → grupo de edad: 30-34
 
     → sexo: Hombres
 
@@ -133,11 +156,11 @@ consultar_censo(nivel = "Comuna",
                 territorio = "Las Condes")
 ```
 
-    ! la edad "0" fue interpretada como "0 a 4"
+    ! edad "0" interpretada como "0-4"
 
     → datos a nivel comuna, Las Condes
 
-    → grupo de edad: 0 a 4
+    → grupo de edad: 0-4
 
     ℹ población censada: 12.824
 
@@ -150,11 +173,11 @@ consultar_censo(nivel = "Comuna",
                 territorio = "Ñuñoa")
 ```
 
-    ! la edad "53" fue interpretada como "50 a 54"
+    ! edad "53" interpretada como "50-54"
 
     → datos a nivel comuna, Ñuñoa
 
-    → grupo de edad: 50 a 54
+    → grupo de edad: 50-54
 
     ℹ población censada: 13.517
 

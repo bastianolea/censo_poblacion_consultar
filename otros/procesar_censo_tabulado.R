@@ -147,4 +147,4 @@ glimpse(censo)
 
 # guardar ----
 
-write_rds(censo, "censo.rds")
+write_rds(censo, "datos/censo.rds")

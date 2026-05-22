@@ -3,22 +3,35 @@ title: "Consultar Censo"
 format: gfm
 ---
 
-Función para consultar la población de comunas, regiones, provincias o país según resultados del Censo 2024.
+Función para consultar la población de comunas, regiones, provincias o
+país según resultados del Censo 2024.
 
-Diseñada para registrarla como herramienta para LLMs y así hacer que la IA pueda consultar datos de población censal.
+Diseñada para registrarla como herramienta para LLMs y así hacer que la
+IA pueda consultar datos de población censal.
 
-Más información [en esta publicación.](https://bastianolea.rbind.io/blog/herramientas_llm/)
+Más información [en esta
+publicación.](https://bastianolea.rbind.io/blog/herramientas_llm/)
 
-## Instalación
+## Archivos
 
-Clona este repositorio, o descarga el script `consultar_censo.R` y el archivo `censo.rds` en tu proyecto de R.
+- `funciones.R` contiene la función `consultar_censo()`, así como otras funciones necesarias para su funcionamiento.
+- `probar.R` muestra ejemplos de uso de `consultar_censo()` y prueba los errores de la misma.
+- `herramienta.R` define el uso de la función `consultar_censo()` para que los modelos de lenguaje puedan usarla.
+- `probar_herramienta.R` muestra ejemplos del uso de la función por medio de un chat de IA.
+
+## Datos
+
+- `datos/censo_2024_largo.csv` resultados del Censo 2024 en formato largo, por edad y sexo, calculados directamente de la base de datos oficial (`personas_censo2024.parquet`) en el script `datos/procesar_censo.R` (opcional)
+
 
 ## Ejemplos de uso
 
 Población a nivel nacional:
 ```{r}
 # cargar la función
-source("consultar_censo.R")
+source("funciones.R")
+
+censo <- cargar_censo()
 
 consultar_censo()
 ```
@@ -46,7 +59,7 @@ consultar_censo(nivel = "Comuna",
 Población por comuna y edad
 ```{r}
 consultar_censo(nivel = "Comuna", 
-                edad = "50 a 54",
+                edad = "50-54",
                 territorio = "Las Condes")
 ```
 
